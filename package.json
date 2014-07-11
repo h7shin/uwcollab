@@ -1,0 +1,26 @@
+{
+  "name": "uwcollab",
+  "version": "0.0.1",
+  "description": "Collaboration software for UW students",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyunwookshin/uwcollab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyunwookshin/uwcollab/issues"
+  },
+  "homepage": "https://github.com/hyunwookshin/uwcollab",
+  "dependencies": {
+    "express": "^4.5.1",
+    "socket.io": "^1.0.6"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
