@@ -10,6 +10,7 @@ function UWCollabCtrl($scope) {
 			from: $scope.clientId,
 			text: $scope.currentMessage
 		}
+			MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 		socket.emit('chat message', msg);
 		$scope.currentMessage = "";
 	};
