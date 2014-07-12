@@ -1,11 +1,27 @@
-var app = require('express')();
-var http = require('http').Server(app);
+var express = require('express');
+var connect = require('connect');
+var bodyParser = require('body-parser');
+var path = require('path');
+var router = express.Router();
+var app = express();
+var http = require('http');
 
-app.get('/', function(req, res){
-    res.send('<h1>Hello world</h1>');
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
+// logging
+router.use(function(req, res, next) {
+    console.log('%s %s %s', req.method, req.url, req.path);
+    next();
 });
 
-var port = Number(process.env.PORT || 3000);
-http.listen(port, function(){
-    console.log('server is listening');
+// routes
+require('./app/routes.js')(router);
+
+app.use(router);
+
+http.createServer(app).listen(app.get('port'), function() {
+    console.log("Server listening on port " + app.get('port'));
 });
