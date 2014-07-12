@@ -50,7 +50,9 @@
       <div class="starter-template">
 
         <div class="alert alert-success" role="alert">{{"Welcome " + clientId + "!" }}</div>
-        <pre>{{ messages }}</pre>
+        <div ng-repeat="msg in messages" ng-class="fromMe(msg.from) ? 'bg-primary' : 'bg-info' ">
+          {{msg.text}}
+        </div>
 
         <form role="form" ng-submit="sendMessage()">
           <div class="form-group">

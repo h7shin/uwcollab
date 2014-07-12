@@ -14,6 +14,10 @@ function UWCollabCtrl($scope) {
 		console.log(msg);
 	};
 
+	$scope.fromMe = function(from) {
+		return from === $scope.clientId;
+	};
+
 	socket.on('connected to server', function(data){
 		$scope.$apply(function() {
 			$scope.clientId = data;
