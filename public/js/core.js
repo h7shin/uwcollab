@@ -29,6 +29,8 @@ function UWCollabCtrl($scope) {
 		$scope.$apply(function() {
 			$scope.messages.push(data);
 			MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			var objDiv = document.getElementById("message-list");
+			objDiv.scrollTop = objDiv.scrollHeight + 100;
 		});
 	});
 }
