@@ -27,6 +27,7 @@ function UWCollabCtrl($scope) {
 	socket.on('server sent message', function(data){
 		$scope.$apply(function() {
 			$scope.messages.push(data);
+			MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 		});
 	});
 }
