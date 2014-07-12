@@ -5,6 +5,8 @@ var path = require('path');
 var router = express.Router();
 var app = express();
 var http = require('http');
+var server = http.Server(app);
+var io = require('socket.io')(server);
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -22,6 +24,16 @@ require('./app/routes.js')(router);
 
 app.use(router);
 
-http.createServer(app).listen(app.get('port'), function() {
+server.listen(app.get('port'), function() {
     console.log("Server listening on port " + app.get('port'));
+});
+
+io.on('connection', function(socket){
+  	console.log('a user connected');
+  	var clientId = socket.id;
+  	socket.emit('connected to server', clientId);
+  	socket.on('chat message', function(msg) {
+		console.log("got message " + msg.text);
+		io.emit('server sent message', msg);
+	});
 });
