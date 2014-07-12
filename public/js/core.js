@@ -11,7 +11,7 @@ function UWCollabCtrl($scope) {
 			text: $scope.currentMessage
 		}
 		socket.emit('chat message', msg);
-		console.log(msg);
+		$scope.currentMessage = "";
 	};
 
 	$scope.fromMe = function(from) {
