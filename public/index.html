@@ -14,6 +14,7 @@
 
     <!-- Custom styles for this template -->
     <link href="./css/default.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,7 +51,7 @@
       <div class="starter-template">
 
         <div class="alert alert-success" role="alert">{{"Welcome " + clientId + "!" }}</div>
-        <div ng-repeat="msg in messages" ng-class="fromMe(msg.from) ? 'bg-primary' : 'bg-info' ">
+        <div ng-repeat="msg in messages" ng-class="fromMe(msg.from) ? 'leftbubble' : 'rightbubble' ">
           {{msg.text}}
         </div>
 
